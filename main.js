@@ -3,7 +3,6 @@ import axios from 'axios';
 
 async function waitForCondition(url, uid, log) {
   while (true) {
-    log("TRY >>>")
     const imageResponse = await axios.get(url);
     
     // Remplacez par votre condition
@@ -35,11 +34,12 @@ export default async ({req, res, log, error}) => {
 
     const url = `http://192.168.1.58:8188/api/history/${response.data.prompt_id}`
 
-    log(url)
 
     const result = await waitForCondition(url, response.data.prompt_id, log);
 
-    log (result.data)
+    const image = result.data[response.data.prompt_id].outputs['10'].images[0]
+
+    log(image)
 
 
     // Gestion des requêtes preflight OPTIONS
