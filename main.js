@@ -83,7 +83,11 @@ export default async ({ req, res, log, error }) => {
 
   return res.json({
     success: true,
-    base64: encodedImage0.base64,
-    base64WithPrefix: encodedImage0.base64WithPrefix
+    images: [
+      encodedImage0.base64WithPrefix,
+      encodedImage1.base64WithPrefix,
+      encodedImage2.base64WithPrefix,
+      encodedImage3.base64WithPrefix
+    ]
   }, 200, headers);
 }
