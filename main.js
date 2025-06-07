@@ -49,5 +49,5 @@ export default async ({req, res, log, error}) => {
     }
 
     // Réponse normale avec les headers CORS
-    return res.text("Hello World", 200, headers);
+    return res.text("Hello Didier", 200, headers);
 }
