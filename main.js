@@ -9,8 +9,11 @@ export default async ({req, res, log, error}) => {
         'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With'
     };
 
+    let updatePrompt = JSON.parse(JSON.stringify(prompt))
+
+    updatePrompt.prompt['3'].inputs.seed = Math.floor(Math.random() * 1000000)
     
-    const response = await axios.post('http://192.168.1.58:8188/api/prompt', prompt)
+    const response = await axios.post('http://192.168.1.58:8188/api/prompt', JSON.stringify(updatePrompt))
 
 
 
