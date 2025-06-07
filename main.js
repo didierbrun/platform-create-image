@@ -11,5 +11,5 @@ export default async ({req, res, log, error}) => {
         return res.send('', 200);
     }
 
-    return res.send("Hello World");
+    return res.send("Hello Test");
 }
