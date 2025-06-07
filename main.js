@@ -1,6 +1,21 @@
 import prompt from './prompt.json' assert { type: 'json' };
 import axios from 'axios';
 
+async function waitForCondition(url, uid) {
+  while (true) {
+    const imageResponse = await axios.get(url);
+    
+    // Remplacez par votre condition
+    if (imageResponse.data && imageResponse.data[uid]) {
+      return imageResponse;
+    }
+    
+    // Attendre 2 secondes avant le prochain essai
+    await new Promise(resolve => setTimeout(resolve, 1000));
+  }
+}
+
+
 export default async ({req, res, log, error}) => {
     // Headers CORS à inclure dans la réponse
     const headers = {
@@ -21,9 +36,9 @@ export default async ({req, res, log, error}) => {
 
     log(url)
 
-    const imageResponse = await axios.get(url)
+    const result = await waitForCondition(url, response.data.prompt_id);
 
-    log(imageResponse.data)
+    log (result.data)
 
 
     // Gestion des requêtes preflight OPTIONS
