@@ -18,7 +18,7 @@ export default async ({req, res, log, error}) => {
 
     const imageResponse = await axios.get(url)
 
-    log(imageResponse)
+    log(imageResponse.data)
 
 
     // Gestion des requêtes preflight OPTIONS
