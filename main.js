@@ -71,9 +71,9 @@ export default async ({ req, res, log, error }) => {
   const urlImage3 = `http://192.168.1.58:8188/api/view?filename=${image3.filename}&subfolder=${image3.subfolder}&type=${image3.type}&rand=${Math.random()}`
 
   const encodedImage0 = await encodeImageToBase64(urlImage0);
-  const encodedImage1 = await encodeImageToBase64(urlImage0);
-  const encodedImage2 = await encodeImageToBase64(urlImage0);
-  const encodedImage3 = await encodeImageToBase64(urlImage0);
+  const encodedImage1 = await encodeImageToBase64(urlImage1);
+  const encodedImage2 = await encodeImageToBase64(urlImage2);
+  const encodedImage3 = await encodeImageToBase64(urlImage3);
 
 
   // Gestion des requêtes preflight OPTIONS
