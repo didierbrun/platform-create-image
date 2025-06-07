@@ -1,4 +1,4 @@
-import prompt from './prompt.json' with { type: 'json' };
+import prompt from './prompt.json' assert { type: 'json' };
 
 
 export default async ({req, res, log, error}) => {
