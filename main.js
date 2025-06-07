@@ -39,6 +39,7 @@ export default async ({req, res, log, error}) => {
 
     const image = result.data[response.data.prompt_id].outputs['10'].images[0]
 
+    log("ici")
     log(image)
 
 
