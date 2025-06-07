@@ -1,8 +1,9 @@
 import prompt from './prompt.json' assert { type: 'json' };
 import axios from 'axios';
 
-async function waitForCondition(url, uid) {
+async function waitForCondition(url, uid, log) {
   while (true) {
+    log("TRY >>>")
     const imageResponse = await axios.get(url);
     
     // Remplacez par votre condition
@@ -36,7 +37,7 @@ export default async ({req, res, log, error}) => {
 
     log(url)
 
-    const result = await waitForCondition(url, response.data.prompt_id);
+    const result = await waitForCondition(url, response.data.prompt_id, log);
 
     log (result.data)
 
