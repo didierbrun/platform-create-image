@@ -55,6 +55,8 @@ export default async ({ req, res, log, error }) => {
 
   let updatePrompt = JSON.parse(JSON.stringify(prompt))
 
+
+
   const requestData = req.body || {};
   const test = requestData.prompt || "red hair girl";
 
