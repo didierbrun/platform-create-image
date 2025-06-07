@@ -1,15 +1,16 @@
 export default async ({req, res, log, error}) => {
-    res.headers = {
+    // Headers CORS à inclure dans la réponse
+    const headers = {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
-        'Access-Control-Allow-Credentials': 'false' // Doit être false quand Origin est *
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With'
     };
 
-    // Gérer les requêtes preflight OPTIONS
+    // Gestion des requêtes preflight OPTIONS
     if (req.method === 'OPTIONS') {
-        return res.send('', 200);
+        return res.empty(headers);
     }
 
-    return res.send("Hello Test");
+    // Réponse normale avec les headers CORS
+    return res.text("Hello World", 200, headers);
 }
