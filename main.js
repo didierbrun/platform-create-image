@@ -19,6 +19,8 @@ export default async ({req, res, log, error}) => {
 
     const url = `http://192.168.1.58:8188/api/history/${response.data.prompt_id}`
 
+    log(url)
+
     const imageResponse = await axios.get(url)
 
     log(imageResponse.data)
