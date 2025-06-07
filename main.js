@@ -1,3 +1,6 @@
+import prompt from './prompt.json'
+
+
 export default async ({req, res, log, error}) => {
     // Headers CORS à inclure dans la réponse
     const headers = {
@@ -6,7 +9,7 @@ export default async ({req, res, log, error}) => {
         'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With'
     };
 
-    log("TEST")
+    log(prompt);
 
     // Gestion des requêtes preflight OPTIONS
     if (req.method === 'OPTIONS') {
