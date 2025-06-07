@@ -6,6 +6,8 @@ export default async ({req, res, log, error}) => {
         'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With'
     };
 
+    log("TEST")
+
     // Gestion des requêtes preflight OPTIONS
     if (req.method === 'OPTIONS') {
         return res.empty(headers);
