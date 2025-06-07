@@ -1,5 +1,5 @@
 import prompt from './prompt.json' assert { type: 'json' };
-
+import axios from 'axios';
 
 export default async ({req, res, log, error}) => {
     // Headers CORS à inclure dans la réponse
@@ -9,7 +9,12 @@ export default async ({req, res, log, error}) => {
         'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With'
     };
 
-    log(prompt);
+    
+    const response = await axios.post('http://192.168.1.58:8188/api/prompt', prompt)
+
+    log(response.data)
+
+
 
     // Gestion des requêtes preflight OPTIONS
     if (req.method === 'OPTIONS') {
