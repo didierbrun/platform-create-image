@@ -39,8 +39,9 @@ export default async ({req, res, log, error}) => {
 
     const image = result.data[response.data.prompt_id].outputs['10'].images[0]
 
-    log("ici")
-    log(image)
+    const urlImage = `http://192.168.1.58:8188/api/view?filename=${image.filename}&subfolder=${image.subfolder}&type=${image.temp}&rand=${Math.random()}`
+
+    log(urlImage)
 
 
     // Gestion des requêtes preflight OPTIONS
