@@ -47,6 +47,8 @@ export default async ({ req, res, log, error }) => {
     'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With'
   };
 
+  log(req.body);
+
   let updatePrompt = JSON.parse(JSON.stringify(prompt))
 
   const test = "red hair girl"
