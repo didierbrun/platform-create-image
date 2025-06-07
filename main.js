@@ -47,11 +47,16 @@ export default async ({ req, res, log, error }) => {
     'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With'
   };
 
+  if (req.method === 'OPTIONS') {
+    return res.json({}, 200, headers); // Changé de res.empty() à res.json()
+  }
+
   //log(req.body);
 
   let updatePrompt = JSON.parse(JSON.stringify(prompt))
 
-  const test = "red hair girl"
+  const requestData = req.body || {};
+  const test = requestData.prompt || "red hair girl";
 
   updatePrompt.prompt['3'].inputs.seed = Math.floor(Math.random() * 1000000)
   updatePrompt.prompt['6'].inputs.text = `${test}, [light contrast], [hard shadows],(photo)`
@@ -82,9 +87,7 @@ export default async ({ req, res, log, error }) => {
 
 
   // Gestion des requêtes preflight OPTIONS
-  if (req.method === 'OPTIONS') {
-    return res.empty(headers);
-  }
+ 
 
   return res.json({
     success: true,
