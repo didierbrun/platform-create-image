@@ -12,8 +12,13 @@ export default async ({req, res, log, error}) => {
     
     const response = await axios.post('http://192.168.1.58:8188/api/prompt', prompt)
 
-    log(response.data)
 
+    const { prompt_id } = response.data;
+
+    const url = `http://192.168.1.58:8188/api/history/${prompt_id}`
+
+    const ready = await axios.get(url)
+    log(ready.response)
 
 
     // Gestion des requêtes preflight OPTIONS
