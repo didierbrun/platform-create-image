@@ -60,13 +60,20 @@ export default async ({ req, res, log, error }) => {
 
   const result = await waitForCondition(url, response.data.prompt_id, log);
 
-  const image = result.data[response.data.prompt_id].outputs['10'].images[0]
+  const image0 = result.data[response.data.prompt_id].outputs['10'].images[0]
+  const image1 = result.data[response.data.prompt_id].outputs['10'].images[1]
+  const image2 = result.data[response.data.prompt_id].outputs['10'].images[2]
+  const image3 = result.data[response.data.prompt_id].outputs['10'].images[3]
 
-  console.log(result.data[response.data.prompt_id].outputs['10'].images.length)
+  const urlImage0 = `http://192.168.1.58:8188/api/view?filename=${image0.filename}&subfolder=${image0.subfolder}&type=${image0.type}&rand=${Math.random()}`
+  const urlImage1 = `http://192.168.1.58:8188/api/view?filename=${image1.filename}&subfolder=${image1.subfolder}&type=${image1.type}&rand=${Math.random()}`
+  const urlImage2 = `http://192.168.1.58:8188/api/view?filename=${image2.filename}&subfolder=${image2.subfolder}&type=${image2.type}&rand=${Math.random()}`
+  const urlImage3 = `http://192.168.1.58:8188/api/view?filename=${image3.filename}&subfolder=${image3.subfolder}&type=${image3.type}&rand=${Math.random()}`
 
-  const urlImage = `http://192.168.1.58:8188/api/view?filename=${image.filename}&subfolder=${image.subfolder}&type=${image.type}&rand=${Math.random()}`
-
-  const encodedImage = await encodeImageToBase64(urlImage);
+  const encodedImage0 = await encodeImageToBase64(urlImage0);
+  const encodedImage1 = await encodeImageToBase64(urlImage0);
+  const encodedImage2 = await encodeImageToBase64(urlImage0);
+  const encodedImage3 = await encodeImageToBase64(urlImage0);
 
 
   // Gestion des requêtes preflight OPTIONS
@@ -76,8 +83,7 @@ export default async ({ req, res, log, error }) => {
 
   return res.json({
     success: true,
-    base64: encodedImage.base64,
-    base64WithPrefix: encodedImage.base64WithPrefix,
-    contentType: encodedImage.contentType
+    base64: encodedImage0.base64,
+    base64WithPrefix: encodedImage0.base64WithPrefix
   }, 200, headers);
 }
