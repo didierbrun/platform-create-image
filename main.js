@@ -61,7 +61,7 @@ export default async ({ req, res, log, error }) => {
   const test = requestData.prompt || "red hair girl";
 
   updatePrompt.prompt['3'].inputs.seed = Math.floor(Math.random() * 1000000)
-  updatePrompt.prompt['6'].inputs.text = `${test}, [light contrast], [hard shadows],(photo)`
+  updatePrompt.prompt['6'].inputs.text = `${test}`
 
   const response = await axios.post('http://192.168.1.58:8188/api/prompt', JSON.stringify(updatePrompt))
 
