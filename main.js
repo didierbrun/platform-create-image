@@ -12,7 +12,7 @@ async function waitForCondition(url, uid, log) {
     }
     
     // Attendre 2 secondes avant le prochain essai
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 500));
   }
 }
 
